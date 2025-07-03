@@ -161,7 +161,7 @@
         <td><?= $index + 1; ?></td>
         <td><?= $anggota_item->nama; ?></td>
         <td><?= $anggota_item->status; ?></td>
-        <td><?= $anggota_item->kk; ?></td>
+        <td><?= $anggota_item->nik; ?></td>
         <td><?= $anggota_item->nis; ?></td>
         <td><?= $anggota_item->email; ?></td>
         <td><?= $anggota_item->nomor_hp; ?></td>

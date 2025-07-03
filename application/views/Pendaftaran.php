@@ -42,74 +42,80 @@
     <h2 class="form-title">Form Daftar Hadir Pengunjung<br>Dinas Perpustakaan dan Kearsipan<br>Kabupaten Batang</h2>
 
     <!-- Form Pendaftaran Anggota -->
-    <form action="<?= base_url('Pendaftaran/tambah'); ?>" method="post" onsubmit="return showSuccessAlert()">
-      <div class="mb-3">
-        <label for="nama" class="form-label required-label">Nama Lengkap</label>
-        <input type="text" class="form-control" id="nama" name="nama" required>
-      </div>
-      
-      <!-- Radio Button for Status -->
-      <div class="mb-3">
-        <label class="form-label required-label">Status</label>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="status" id="siswa" value="siswa" required>
-          <label class="form-check-label" for="siswa">Siswa</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="status" id="umum" value="umum" required>
-          <label class="form-check-label" for="umum">Umum</label>
-        </div>
-      </div>
-      
-      <!-- Dynamic Fields -->
-      <div class="mb-3 dynamic-field" id="nis-field">
-        <label for="nis" class="form-label required-label">Nomor Induk Siswa (NIS)</label>
-        <input type="text" class="form-control" id="nis" name="nis">
-      </div>
-      
-      <div class="mb-3 dynamic-field" id="nik-field">
-        <label for="kk" class="form-label required-label">Nomor Induk Kependudukan (NIK)</label>
-        <input type="text" class="form-control" id="kk" name="kk">
-      </div>
-      
-      <div class="mb-3">
-        <label for="email" class="form-label required-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-      </div>
-      
-      <div class="mb-3">
-        <label for="nomor_hp" class="form-label required-label">Nomor HP</label>
-        <input type="text" class="form-control" id="nomor_hp" name="nomor_hp" required>
-      </div>
-      
-      <div class="mb-3">
-        <label for="alamat" class="form-label required-label">Alamat Lengkap</label>
-        <textarea class="form-control" id="alamat" name="alamat" rows="3" required></textarea>
-      </div>
-      
-      <button type="submit" class="btn btn-primary btn-submit mt-3">Daftar</button>
-    </form>
+   <form action="<?= base_url('anggota/tambah'); ?>" method="post" onsubmit="return showSuccessAlert()">
+  <!-- Nama -->
+  <div class="mb-3">
+    <label for="nama" class="form-label required-label">Nama Lengkap</label>
+    <input type="text" class="form-control" id="nama" name="nama" required>
+  </div>
+
+  <!-- Status -->
+  <div class="mb-3">
+    <label class="form-label required-label">Status</label>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="status" id="siswa" value="siswa" required>
+      <label class="form-check-label" for="siswa">Siswa</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="status" id="umum" value="umum" required>
+      <label class="form-check-label" for="umum">Umum</label>
+    </div>
+  </div>
+
+  <!-- NIS / NIK -->
+  <div class="mb-3 dynamic-field" id="nis-field">
+    <label for="nis" class="form-label required-label">Nomor Induk Siswa (NIS)</label>
+    <input type="text" class="form-control" id="nis" name="nis">
+  </div>
+
+  <div class="mb-3 dynamic-field" id="nik-field">
+    <label for="nik" class="form-label required-label">Nomor Induk Kependudukan (NIK)</label>
+    <input type="text" class="form-control" id="nik" name="nik">
+  </div>
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label for="email" class="form-label required-label">Email</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+  </div>
+
+  <!-- Nomor HP -->
+  <div class="mb-3">
+    <label for="nomor_hp" class="form-label required-label">Nomor HP</label>
+    <input type="text" class="form-control" id="nomor_hp" name="nomor_hp" required>
+  </div>
+
+  <!-- Alamat -->
+  <div class="mb-3">
+    <label for="alamat" class="form-label required-label">Alamat Lengkap</label>
+    <textarea class="form-control" id="alamat" name="alamat" rows="3" required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-submit mt-3">Daftar</button>
+</form>
+
   </div>
 </div>
 
+<!-- JavaScript Toggle -->
 <script>
   function toggleFields() {
     const siswaRadio = document.getElementById('siswa');
     const nisField = document.getElementById('nis-field');
     const nikField = document.getElementById('nik-field');
     const nisInput = document.getElementById('nis');
-    const kkInput = document.getElementById('kk');
+    const nikInput = document.getElementById('nik');
 
     if (siswaRadio.checked) {
       nisField.style.display = 'block';
       nikField.style.display = 'none';
       nisInput.setAttribute('required', 'required');
-      kkInput.removeAttribute('required');
-      kkInput.value = '';
+      nikInput.removeAttribute('required');
+      nikInput.value = '';
     } else {
       nisField.style.display = 'none';
       nikField.style.display = 'block';
-      kkInput.setAttribute('required', 'required');
+      nikInput.setAttribute('required', 'required');
       nisInput.removeAttribute('required');
       nisInput.value = '';
     }
@@ -120,6 +126,7 @@
   document.addEventListener('DOMContentLoaded', toggleFields);
 </script>
 
+<!-- Success Alert -->
 <script>
   function showSuccessAlert() {
     alert("Pendaftaran berhasil!");
